@@ -1,3 +1,7 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+
 require 'yaml'
 require 'fileutils'
 
@@ -75,7 +79,7 @@ Vagrant.configure(2) do |config|
   # provisioners
   config.vm.provision 'shell', path: './vagrant/provision/once-as-root.sh', args: [options['timezone']]
   config.vm.provision 'shell', path: './vagrant/provision/once-as-vagrant.sh', args: [options['github_token']], privileged: false
-#  config.vm.provision 'shell', path: './vagrant/provision/once-for-magento.sh', args: [options['shop_admin_email']], privileged: false
+  config.vm.provision 'shell', path: './vagrant/provision/once-for-magento.sh', args: [options['shop_admin_email']], privileged: false
   config.vm.provision 'shell', path: './vagrant/provision/always-as-root.sh', run: 'always'
 
   # post-install message (vagrant console)

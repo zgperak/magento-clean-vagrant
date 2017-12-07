@@ -13,11 +13,11 @@ function info {
 }
 
 info "Enabling site configuration"
-ln -s /app/vagrant/nginx/app.conf /etc/nginx/sites-enabled/app.conf
+sudo ln -s /app/vagrant/nginx/app.conf /etc/nginx/sites-enabled/app.conf
 echo "Done!"
 
 info "Restart web-stack"
-php5enmod mcrypt
+sudo php5enmod mcrypt
 sudo service php5-fpm restart
 sudo service nginx restart
 sudo service mysql restart
