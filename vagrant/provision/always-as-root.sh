@@ -15,6 +15,6 @@ info "Provision-script user: `whoami`"
 
 info "Restart web-stack"
 php5enmod mcrypt
-service php5.6-fpm restart
+service php5-fpm restart
 service nginx restart
 service mysql restart

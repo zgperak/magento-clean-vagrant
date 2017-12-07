@@ -16,21 +16,21 @@ function info {
 
 info "Provision-script user: `whoami`"
 
-info "Configure composer"
-composer config --global github-oauth.github.com ${github_token}
-echo "Done!"
-
-info "Install plugins for composer"
-composer global require "fxp/composer-asset-plugin" --no-progress
-
-
-info "Composer dependencies"
-composer --no-progress --prefer-dist install
-
 info "Create bash-alias 'app' for vagrant user"
 echo 'alias app="cd /app"' | tee /home/vagrant/.bash_aliases
 
 info "Enabling colorized prompt for guest console"
 sed -i "s/#force_color_prompt=yes/force_color_prompt=yes/" /home/vagrant/.bashrc
+
+
+info "Configure composer"
+composer config --global github-oauth.github.com ${github_token}
+echo "Done!"
+
+
+info "Composer dependencies"
+cd /app
+composer install
+
 
 
